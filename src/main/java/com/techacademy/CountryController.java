@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("country")
 public class CountryController {
     @Autowired
-    private CountryService service;
-
+    private final CountryService service;
+    public CountryController(CountryService service) {
+        this.service = service;
+    }
     // 一覧画像
     @GetMapping("/list")
     public String getList(Model model) {

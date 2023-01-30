@@ -9,9 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CountryService {
-    @Autowired
-    private CountryRepository repository;
+    private final CountryRepository repository;
     //全体を検索して返す
+
+    @Autowired
+    public CountryService(CountryRepository repository) {
+        this.repository = repository;
+    }
     public List<Country> getCountryList() {
         //リポジトリのfindAllメソッドを呼び出す
         return repository.findAll();

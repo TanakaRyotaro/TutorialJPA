@@ -39,9 +39,7 @@ public class CountryController {
     @PostMapping("/detail")
     public String postCountry(@RequestParam("code") String code, @RequestParam("name") String name,
             @RequestParam("population") int population, Model model) {
-        // 更新（追加）
         service.updateCountry(code, name, population);
-
         // 一覧画面にリダイレクト
         return "redirect:/country/list";
     }
@@ -51,13 +49,11 @@ public class CountryController {
         // country/delete.htmlに画面遷移
         return "country/delete";
     }
-
         // ----- 削除 -----
     @PostMapping("/delete")
     public String deleteCountry(@RequestParam("code") String code, Model model) {
         // 削除
         service.deleteCountry(code);
-
         // 一覧画面にリダイレクト
         return "redirect:/country/list";
     }
